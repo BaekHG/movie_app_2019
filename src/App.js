@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./Movie";
+import "./App.css"
 
 class App extends React.Component {
   state = {
@@ -14,7 +15,7 @@ class App extends React.Component {
     //modern JS
     const { data: { data: { movies } } } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
     console.log(movies);
-    this.setState({ movies: movies, isLoading: false });
+    this.setState({ movies: movies , isLoading: false});
   };
 
   componentDidMount() {
@@ -39,6 +40,7 @@ class App extends React.Component {
                 title={movie.title}
                 summary={movie.summary}
                 poster={movie.medium_cover_image}
+                genres={movie.genres}
               ></Movie>
             ))}
           </div>
